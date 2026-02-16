@@ -235,6 +235,12 @@ func (query *Query) Merge(q2 Query) Query {
 		}
 	}
 
+	for _, project := range q2.AntiProjects {
+		if !StrSliceContains(q.AntiProjects, project) {
+			q.AntiProjects = append(q.AntiProjects, project)
+		}
+	}
+
 	if !q2.Due.IsZero() {
 		if !q.Due.IsZero() && q.Due != q2.Due {
 			ExitFail("Could not apply q2, date filter conflict")
