@@ -15,15 +15,15 @@ export DSTASK_GIT_REPO=$(mktemp --directory)
 export UPSTREAM_BARE_REPO=$(mktemp --directory)
 
 if [[ -d "dstask" ]]; then
-	rm -r dstask
+    rm -r dstask
 fi
 
 cleanup() {
-	set +x
-	set +e
-	rm -rf $DSTASK_GIT_REPO
-	rm -rf $UPSTREAM_BARE_REPO
-	rm dstask
+    set +x
+    set +e
+    rm -rf $DSTASK_GIT_REPO
+    rm -rf $UPSTREAM_BARE_REPO
+    rm dstask
 }
 
 trap cleanup EXIT
