@@ -36,9 +36,6 @@ jobs:
         with:
           go-version-file: go.mod
 
-      - name: Go mod vendor
-        run: go mod vendor
-
       - name: Configure Git User
         run: |
           git config --global user.name "GitHub Actions Bot"
@@ -46,7 +43,7 @@ jobs:
 
       - name: Run tests
         run: |
-          go test -v -mod=vendor ./...
+          go test -v ./...
           ./integrationtest.sh
 
   windows-test:
@@ -63,10 +60,6 @@ jobs:
         with:
           go-version-file: go.mod
 
-      - name: Go mod vendor
-        shell: pwsh
-        run: go mod vendor
-
       - name: Configure Git User
         shell: pwsh
         run: |
@@ -75,10 +68,10 @@ jobs:
 
       - name: Run Go tests
         shell: pwsh
-        run: go test -v -mod=vendor ./...
+        run: go test -v ./...
 
       - name: Build Windows binaries
         shell: pwsh
         run: |
-          go build -mod=vendor -o dstask.exe ./cmd/dstask
-          go build -mod=vendor -o dstask-import.exe ./cmd/dstask-import
+          go build -o dstask.exe ./cmd/dstask
+          go build -o dstask-import.exe ./cmd/dstask-import

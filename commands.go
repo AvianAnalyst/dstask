@@ -304,28 +304,26 @@ func CommandNote(conf Config, ctx, query Query) error {
 
 	for _, id := range query.IDs {
 		task := ts.MustGetByID(id)
-		// If stdout is a TTY, we may open the editor
-		if StdoutIsTTY() {
-			if query.Text == "" {
-				task.Notes = string(
-					MustEditBytes(
-						[]byte(task.Notes),
-						MakeTempFilename(task.ID, task.Summary, "md"),
-					),
-				)
+		if query.Text != "" {
+			if task.Notes == "" {
+				task.Notes = query.Text
 			} else {
-				if task.Notes == "" {
-					task.Notes = query.Text
-				} else {
-					task.Notes += "\n" + query.Text
-				}
+				task.Notes += "\n" + query.Text
 			}
-
+			ts.MustUpdateTask(task)
+			ts.SavePendingChanges()
+			MustGitCommit(conf.Repo, "Edit note %s", task)
+		} else if StdoutIsTTY() {
+			task.Notes = string(
+				MustEditBytes(
+					[]byte(task.Notes),
+					MakeTempFilename(task.ID, task.Summary, "md"),
+				),
+			)
 			ts.MustUpdateTask(task)
 			ts.SavePendingChanges()
 			MustGitCommit(conf.Repo, "Edit note %s", task)
 		} else {
-			// If stdout is not a TTY, we simply write markdown notes to stdout
 			if err := WriteStdout([]byte(task.Notes)); err != nil {
 				ExitFail("Could not write to stdout: %v", err)
 			}

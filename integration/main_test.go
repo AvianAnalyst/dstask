@@ -35,7 +35,7 @@ func TestMain(m *testing.M) {
 func compile(outputPath string) error {
 	// We expect to execute in the ./integration directory, and we will output
 	// our test binary there.
-	cmd := exec.Command("go", "build", "-mod=vendor", "-o", outputPath, "../cmd/dstask/main.go")
+	cmd := exec.Command("go", "build", "-o", outputPath, "../cmd/dstask/main.go")
 
 	return cmd.Run()
 }
