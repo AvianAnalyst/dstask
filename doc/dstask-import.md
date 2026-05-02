@@ -10,7 +10,7 @@ At this point it supports importing from:
 
 See below for details on each
 
-# Taskwarrior
+## Taskwarrior
 
 The import functionality is designed to aid with the transition from using taskwarrior to dstask.
 
