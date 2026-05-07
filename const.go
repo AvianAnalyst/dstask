@@ -65,6 +65,8 @@ const (
 	CMD_PRINT_BASH_COMPLETION = "bash-completion"
 	//nolint
 	CMD_PRINT_FISH_COMPLETION = "fish-completion"
+	//nolint
+	CMD_PRINT_NU_COMPLETION = "nushell-completion"
 
 	// filter: P1 P2 etc
 	PRIORITY_CRITICAL = "P0"
@@ -180,6 +182,7 @@ var ALL_CMDS = []string{
 	CMD_PRINT_BASH_COMPLETION,
 	CMD_PRINT_FISH_COMPLETION,
 	CMD_PRINT_ZSH_COMPLETION,
+	CMD_PRINT_NU_COMPLETION,
 	CMD_HELP,
 	CMD_VERSION,
 }

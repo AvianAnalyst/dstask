@@ -111,6 +111,7 @@ Requirements:
 1. Enable shell completions:
    - Bash: add `source <(dstask bash-completion)` to your `.bashrc`.
    - Zsh: add `dstask zsh-completion > /usr/local/share/zsh/site-functions/_dstask` or source `completions/zsh.sh` in your `~/.zshrc`.
+   - Nushell: run `dstask nushell-completion | save -f ~/.config/nushell/completions/dstask.nu` then add `source ~/.config/nushell/completions/dstask.nu` to your `config.nu`.
    - PowerShell (Windows): see section "PowerShell completion" below.
 1. Set up an alias in your `.bashrc`: `alias task=dstask` or `alias t=dstask` to make task management slightly faster.
 1. Create or clone a `~/.dstask` git repository for the data, if you haven't already:
@@ -185,34 +186,35 @@ any words after.
 
 Available commands:
 
-next              : Show most important tasks (priority, creation date -- truncated and default)
-add               : Add a task
-template          : Add a task template
-log               : Log a task (already resolved)
-start             : Change task status to active
-note              : Append to or edit note for a task
-stop              : Change task status to pending
-done              : Resolve a task
-context           : Set global context for task list and new tasks (use "none" to set no context)
-modify            : Set attributes for a task
-edit              : Edit task with text editor
-undo              : Undo last action with git revert
-sync              : Pull then push to git repository, automatic merge commit.
-open              : Open all URLs found in summary/annotations
-git               : Pass a command to git in the repository. Used for push/pull.
-remove            : Remove a task (use to remove tasks added by mistake)
-show-projects     : List projects with completion status
-show-tags         : List tags in use
-show-active       : Show tasks that have been started
-show-paused       : Show tasks that have been started then stopped
-show-open         : Show all non-resolved tasks (without truncation)
-show-resolved     : Show resolved tasks
-show-templates    : Show task templates
-show-unorganised  : Show untagged tasks with no projects (global context)
-bash-completion   : Print bash completion script to stdout
-zsh-completion    : Print zsh completion script to stdout
-help              : Get help on any command or show this message
-version           : Show dstask version information
+next                : Show most important tasks (priority, creation date -- truncated and default)
+add                 : Add a task
+template            : Add a task template
+log                 : Log a task (already resolved)
+start               : Change task status to active
+note                : Append to or edit note for a task
+stop                : Change task status to pending
+done                : Resolve a task
+context             : Set global context for task list and new tasks (use "none" to set no context)
+modify              : Set attributes for a task
+edit                : Edit task with text editor
+undo                : Undo last action with git revert
+sync                : Pull then push to git repository, automatic merge commit.
+open                : Open all URLs found in summary/annotations
+git                 : Pass a command to git in the repository. Used for push/pull.
+remove              : Remove a task (use to remove tasks added by mistake)
+show-projects       : List projects with completion status
+show-tags           : List tags in use
+show-active         : Show tasks that have been started
+show-paused         : Show tasks that have been started then stopped
+show-open           : Show all non-resolved tasks (without truncation)
+show-resolved       : Show resolved tasks
+show-templates      : Show task templates
+show-unorganised    : Show untagged tasks with no projects (global context)
+bash-completion     : Print bash completion script to stdout
+zsh-completion      : Print zsh completion script to stdout
+nushell-completion  : Print nushell completion script to stdout
+help                : Get help on any command or show this message
+version             : Show dstask version information
 ```
 
 # Syntax

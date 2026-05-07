@@ -33,6 +33,9 @@ func main() {
 	case dstask.CMD_PRINT_FISH_COMPLETION:
 		fmt.Print(completions.Fish)
 
+	case dstask.CMD_PRINT_NU_COMPLETION:
+		fmt.Print(completions.Nushell)
+
 	default:
 		noInitCommand = false
 	}
