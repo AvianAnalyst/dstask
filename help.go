@@ -212,15 +212,20 @@ this command.
 Show a breakdown of projects with progress information
 `
 
-	case CMD_PRINT_BASH_COMPLETION, CMD_PRINT_ZSH_COMPLETION, CMD_PRINT_FISH_COMPLETION:
-		helpStr = `Usage: dstask [bash|zsh|fish]-completion
+	case CMD_PRINT_BASH_COMPLETION,
+		CMD_PRINT_ZSH_COMPLETION,
+		CMD_PRINT_FISH_COMPLETION,
+		CMD_PRINT_NU_COMPLETION:
+		helpStr = `Usage: dstask [bash|zsh|fish|nushell]-completion
 
 Print a shell completion script to stdout. The script can be sourced from
-a user's .bashrc, .zshrc, or fish.config like so:
+a user's .bashrc, .zshrc, fish.config, or nushell config.nu like so:
 
     source <(dstask bash-completion)
     source <(dstask zsh-completion)
-    dtask fish-completion | source
+    dstask fish-completion | source
+    dstask nushell-completion | save -f ~/.config/nushell/completions/dstask.nu
+    # then add ` + "`source ~/.config/nushell/completions/dstask.nu`" + ` to your config.nu
 `
 	default:
 		helpStr = `Usage: dstask [id...] <cmd> [task summary/filter]
@@ -241,35 +246,36 @@ any words after.
 
 Available commands:
 
-next              : Show most important tasks (priority, creation date -- truncated and default)
-add               : Add a task
-template          : Add a task template
-log               : Log a task (already resolved)
-start             : Change task status to active
-note              : Append to or edit note for a task
-stop              : Change task status to pending
-done              : Resolve a task
-context           : Set global context for task list and new tasks (use "none" to set no context)
-modify            : Change task attributes specified on command line
-edit              : Edit task with text editor
-undo              : Undo last n commits
-sync              : Pull then push to git repository, automatic merge commit.
-open              : Open all URLs found in summary/annotations
-git               : Pass a command to git in the repository. Used for push/pull.
-remove            : Remove a task (use to remove tasks added by mistake)
-show-projects     : List projects with completion status
-show-tags         : List tags in use
-show-active       : Show tasks that have been started
-show-paused       : Show tasks that have been started then stopped
-show-open         : Show all non-resolved tasks (without truncation)
-show-resolved     : Show resolved tasks
-show-templates    : Show task templates
-show-unorganised  : Show untagged tasks with no projects (global context)
-bash-completion   : Print bash completion script to stdout
-fish-completion   : Print fish completion script to stdout
-zsh-completion    : Print zsh completion script to stdout
-help              : Get help on any command or show this message
-version           : Show dstask version information
+next                : Show most important tasks (priority, creation date -- truncated and default)
+add                 : Add a task
+template            : Add a task template
+log                 : Log a task (already resolved)
+start               : Change task status to active
+note                : Append to or edit note for a task
+stop                : Change task status to pending
+done                : Resolve a task
+context             : Set global context for task list and new tasks (use "none" to set no context)
+modify              : Change task attributes specified on command line
+edit                : Edit task with text editor
+undo                : Undo last n commits
+sync                : Pull then push to git repository, automatic merge commit.
+open                : Open all URLs found in summary/annotations
+git                 : Pass a command to git in the repository. Used for push/pull.
+remove              : Remove a task (use to remove tasks added by mistake)
+show-projects       : List projects with completion status
+show-tags           : List tags in use
+show-active         : Show tasks that have been started
+show-paused         : Show tasks that have been started then stopped
+show-open           : Show all non-resolved tasks (without truncation)
+show-resolved       : Show resolved tasks
+show-templates      : Show task templates
+show-unorganised    : Show untagged tasks with no projects (global context)
+bash-completion     : Print bash completion script to stdout
+fish-completion     : Print fish completion script to stdout
+zsh-completion      : Print zsh completion script to stdout
+nushell-completion  : Print nushell completion script to stdout
+help                : Get help on any command or show this message
+version             : Show dstask version information
 
 Colour Key:
 `

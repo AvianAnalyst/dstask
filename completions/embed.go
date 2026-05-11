@@ -22,3 +22,8 @@ var Fish string
 //
 //go:embed powershell.ps1
 var PowerShell string
+
+// Nushell completion script
+//
+//go:embed nushell.nu
+var Nushell string
